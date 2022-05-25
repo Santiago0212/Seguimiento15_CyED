@@ -1,67 +1,6 @@
 # Seguimiento15_CyED
 
-El programa funciona a base de entradas, tales como la siguente:
-
-7
-
-Chiminangos
-
-Flora Industrial
-
-Salomia
-
-Torre de Cali
-
-Estadio
-
-Universidades
-
-Unidad Deportiva
-
-7
-Chiminangos
-
-Flora Industrial
-
-10
-
-Flora Industrial
-
-Salomia
-
-12
-
-Salomia
-
-Torre de Cali
-
-13
-
-Torre de Cali
-
-Estadio
-
-15
-
-Torre de Cali
-
-Unidad Deportiva
-
-5
-
-Estadio
-
-Universidades
-
-15
-
-Unidad Deportiva
-
-Universidades
-
-5
-
-Chiminangos
+El programa funciona a base de entradas, tales como la que se encuentra en el archivo input.txt
 
 El primer número (7) representa el número de vertices a ser añadidos, y luego, es seguido de los nombres que llevarán estos vertices.
 
