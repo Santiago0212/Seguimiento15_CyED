@@ -143,8 +143,6 @@ public class Graph<T extends Comparable<T>> {
 						arbolGeneradorMinimo.find(current.getAdjacencyEdges().get(j).getVertex1().getValue()).getChildren().add(new Node<T>(current.getAdjacencyEdges().get(j).getVertex2().getValue()));
 					}
 				}
-				
-				System.out.println(current.getValue()+"-"+aux.getValue());
 				distancias.remove(aux);
 				distancias.put(aux, distanciaActual+weight);
 			}

@@ -1,45 +1,61 @@
 package main;
 
 import java.util.ArrayList;
-
-import structures.Edge;
+import java.util.Scanner;
 import structures.Graph;
+import structures.Node;
 import structures.Tree;
-import structures.Vertex;
 
 public class Main {
 
 	public static void main(String[] args) {
-		Graph<String> routes = new Graph<>();
+		
+		Scanner sc = new Scanner(System.in);
+		
+		Graph<String> myGraph = new Graph<>();
+		
+		System.out.println("\nEnter the number of vertex to be entered in the graph: ");
+		int numVertex=sc.nextInt();
+		sc.nextLine();
+		
+		for(int i=0;i<numVertex;i++) {
+			System.out.print("Vertex "+(i+1)+" -> ");
+			String vertex=sc.nextLine();
+			myGraph.addVertex(vertex);
+		}
+		
+		System.out.println("\nEnter the number of edges to be entered in the graph: ");
+		int numEdges=sc.nextInt();
+		
+		sc.nextLine();
+		for(int i=0;i<numEdges;i++) {
+			System.out.println("Edge "+(i+1)+": ");
+			System.out.print("First vertex -> ");
+			String edge1=sc.nextLine();
+			System.out.println("Second vertex -> ");
+			String edge2=sc.nextLine();
+			System.out.println("Weight - >");
+			int weight = sc.nextInt();
+			sc.nextLine();
+			myGraph.addEdge(edge1,edge2,weight);
+		}
 			
-		routes.addVertex("Chiminangos");
-		routes.addVertex("Flora Industrial");
-		routes.addVertex("Salomia");
-		routes.addVertex("Torre de Cali");
-		routes.addVertex("Estadio");
-		routes.addVertex("Universidades");
-		routes.addVertex("Unidad Deportiva");
+
 		
-		routes.addEdge("Chiminangos", "Flora Industrial", 10);
-		routes.addEdge("Chiminangos", "Flora Industrial", 10);
-		routes.addEdge("Flora Industrial", "Salomia", 12);
-		routes.addEdge("Salomia", "Torre de Cali", 13);
-		routes.addEdge("Torre de Cali", "Estadio", 15);
-		routes.addEdge("Estadio", "Universidades", 15);
-		routes.addEdge("Torre de Cali", "Unidad Deportiva", 5);
-		routes.addEdge("Unidad Deportiva", "Universidades", 5);
+		System.out.println("Wich vertex do you want to find the minimum tree?: ");
+		String vertex = sc.nextLine();
 		
 		
+		myGraph.initPrim(myGraph.search(vertex));
+		Tree<String> arbolGeneradorMinimo = myGraph.getArbolGeneradorMinimo();
+		ArrayList<Node<String>> preOrder = arbolGeneradorMinimo.preOrder();
 		
-		System.out.println("-----------------------");
-		
-		
-		routes.initPrim(routes.search("Chiminangos"));
-		Tree<String> arbolGeneradorMinimo = routes.getArbolGeneradorMinimo();
-		ArrayList<String> preOrder = arbolGeneradorMinimo.preOrder();
-		
-		for(String s : preOrder) {
-			System.out.println(s);
+		for(Node<String> s : preOrder) {
+			System.out.println("----"+s.getValue()+"----");
+			for(Node<String> c : s.getChildren()) {
+				System.out.println(c.getValue());
+			}
+			System.out.println("");
 		}
 		
 	}
